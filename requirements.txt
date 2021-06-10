@@ -1,0 +1,5 @@
+# To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
+Django>=3.2.3,<3.3
+uWSGI>=2.0.19.1,<2.1
+django-db-prefix==1.0.5,<1.2.0
+psycopg2>=2.8.6,<2.9
