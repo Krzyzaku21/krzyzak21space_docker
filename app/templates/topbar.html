@@ -1,0 +1,342 @@
+{% load static %}
+<style>
+    @media screen and (max-width: 700px) {
+        .topbar {
+            padding: 13px !important;
+        }
+    }
+    .topbar {
+        background-color: #303030;
+        color: white;
+        border-left: 1px solid rgba(255, 255, 255, 1);
+    }
+    #sidebarToggleTop {
+        color: white;
+    }
+    #sidebarToggleTop:focus {
+        color: green;
+    }
+    .input-group {
+        float: right !important;
+        z-index: 1;
+    }
+    .input-search {
+        background-color: #303030 !important;
+        color: white !important;
+        right: 0px;
+        width: 0px !important;
+        transition: 2s linear;
+        padding: 0 !important;
+        margin: 2px 0 2px 0 !important;
+        border: 1px solid black;
+        border-radius: 0.35rem 0 0 0.35rem !important;
+        z-index: 2;
+        position: relative;
+        transition-delay: 3s;
+        box-shadow: rgba(78, 115, 223, 0.25) 0 0 0 1px;
+    }
+    .navbar-search .input-group:hover .input-search {
+        width: 150px !important;
+        transition: 2s linear;
+    }
+    .input-group-append {
+        top: 0;
+        right: 0;
+        z-index: 3;
+        display: block;
+        left: initial;
+    }
+    .topbar form.navbar-search2 {
+        width: 200px !important;
+    }
+    .input-btn {
+        position: absolute;
+        background-color: #17532b;
+        color: white !important;
+        border: 1px solid black;
+        border-radius: 0.35rem 0.35rem 0.35rem 0.35rem !important;
+    }
+    .input-btn:hover {
+        background-color: #17532b;
+        color: white !important;
+        border: 1px solid black;
+        border-radius: 0.35rem 0.35rem 0.35rem 0.35rem;
+    }
+    .input-btn:focus {
+        background-color: #7b0202;
+    }
+    .navbar-search2 {
+        position: absolute;
+        top: 70px;
+        right: 0;
+    }
+</style>
+<!-- Topbar -->
+<nav class="navbar navbar-expand topbar mb-4 static-top shadow p-0">
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle bg-danger">
+        <i class="fa fa-bars"></i>
+    </button>
+    <!-- Topbar Search -->
+    <form class="navbar-search2 d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search flex-nowrap">
+        <div class="input-group">
+            <input type="text" class="input-search form-control border-0 small" placeholder="  Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
+            <div class="input-group-append">
+                <button class="input-btn btn" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <style>
+        @media screen and (max-width: 700px) {
+            .nav-list2 {
+                display: none !important;
+            }
+        }
+        .nav-list2 .nav-link,
+        .nav-list1 .nav-link {
+            background-color: #303030 !important;
+            transition-duration: 2s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0.15s;
+        }
+        .nav-list2 .nav-link:focus,
+        .nav-list1 .nav-link:focus {
+            background-color: #17532b !important;
+        }
+        .nav-list2 .nav-link:hover,
+        .nav-list1 .nav-link:hover {
+            background-color: #17532b !important;
+            transition-duration: 2s;
+            transition-timing-function: ease-in-out;
+        }
+        .nav-icon {
+            font-size: 18px !important;
+        }
+    </style>
+    <ul class="nav-list1 navbar-nav me-auto">
+        <li class="nav-item1 nav-item d-none d-sm-block">
+            <a class="nav-link d-flex justify-content-center align-items-center" aria-current="page" href="{% url 'blog:post_list' %}"
+                ><span class="text-white small">Blog</span></a
+            >
+        </li>
+        <li class="d-xl-none p-1">
+            <a class="nav-icon btn btn-circle btn-sm text-white" href="/" role="button"><i class="fas fa-home"></i></a>
+        </li>
+    </ul>
+    <ul class="nav-list1 navbar-nav me-auto">
+        <li class="nav-item1 nav-item d-none d-sm-block">
+            <a class="nav-link d-flex justify-content-center align-items-center" aria-current="page" href="{% url 'gallery' %}"
+                ><span class="text-white small">Galeria</span></a
+            >
+        </li>
+        <li class="d-xl-none p-1">
+            <a class="nav-icon btn btn-circle btn-sm text-white" href="/" role="button"><i class="fas fa-video"></i></a>
+        </li>
+    </ul>
+    <ul class="nav-list2 navbar-nav me-auto">
+        <li class="nav-item">
+            <a class="nav-link d-flex justify-content-center align-items-center" aria-current="page" href="#"><span class="text-white small">Artykuły</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex justify-content-center align-items-center" aria-current="page" href="#"><span class="text-white small">Kalkulacje</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex justify-content-center align-items-center" aria-current="page" href="#"><span class="text-white small">Portfel</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex justify-content-center align-items-center" aria-current="page" href="#"><span class="text-white small">Skrypty</span></a>
+        </li>
+    </ul>
+    <style>
+        .dropdown-btn {
+            background-color: #17532b !important;
+            color: white !important;
+        }
+        .fas-btn {
+            color: white !important;
+        }
+        .navbar .dropdown-menu {
+            background-color: #303030 !important;
+        }
+        .dropdown-menu .dropdown-header {
+            background-color: #17532b !important;
+            border-color: white !important;
+        }
+        .navbar .dropdown-item {
+            color: white !important;
+        }
+        .navbar .dropdown-item:hover {
+            background-color: #17532b !important;
+            color: white !important;
+        }
+    </style>
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+        <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas-btn fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in border border-dark" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
+                        <div class="input-group-append">
+                            <button class="btn dropdown-btn" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+
+        <!-- Nav Item - Alerts -->
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="text-white fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">Ogłoszenia</h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">Grudzień 12, 2019</div>
+                        <span class="font-weight-bold">text1</span>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-success">
+                            <i class="fas fa-donate text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">Grudzień 7, 2019</div>
+                        text1
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-warning">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">Grudzień 2, 2019</div>
+                        text1
+                    </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Pokaż wszystkie ogłoszenia</a>
+            </div>
+        </li>
+
+        <!-- Nav Item - Messages -->
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="text-white fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">7</span>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">Wiadomości</h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="" />
+                        <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                        <div class="text-truncate">text1</div>
+                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="" />
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div>
+                        <div class="text-truncate">text1</div>
+                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="" />
+                        <div class="status-indicator bg-warning"></div>
+                    </div>
+                    <div>
+                        <div class="text-truncate">text1</div>
+                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="" />
+                        <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div>
+                        <div class="text-truncate">
+                            Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...
+                        </div>
+                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                    </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            </div>
+        </li>
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if user.is_authenticated %}
+                <span class="mr-2 d-none d-lg-inline text-warning small mr-3">{{ user.username }}</span>
+                {% if user.profile.photo %}
+                <img class="img-profile rounded-circle" src="{{ user.profile.get_absolute_image }}" />
+                {% else %}
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" />
+                {% endif %} {% else %}
+                <span class="mr-2 d-none d-lg-inline text-warning small mr-3">Nick</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" />
+                {% endif %}
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                {% if request.user.is_authenticated %}
+                <a class="dropdown-item" href="{% url 'profile' %}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profil
+                </a>
+                <a class="dropdown-item" href="{% url 'edit' %}">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Ustawienia
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Wyloguj
+                </a>
+                {% else %}
+                <a class="dropdown-item" href="{% url 'login' %}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Zaloguj
+                </a>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+</nav>

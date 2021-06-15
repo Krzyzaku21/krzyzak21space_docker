@@ -8,7 +8,8 @@ services:
             - .env
         restart: always
         volumes:
-            - static-data:/vol/web
+            - static-data:/app/staticfiles
+            - media-data:/app/mediafiles
         environment:
             - ALLOWED_HOSTS=django,127.0.0.1,localhost
 
@@ -24,7 +25,9 @@ services:
             # - 443:433
         volumes:
             - static-data:/vol/static
+            - media-data:/vol/mediafiles
             - ./nginx/logs:/var/log/nginx
 
 volumes:
     static-data:
+    media-data:

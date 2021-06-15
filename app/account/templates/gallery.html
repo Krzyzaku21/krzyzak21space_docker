@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block Pages %}{% load static %}{% include "scripts.html" %}
+<title>{% block title %}Gallery{% endblock title %}</title>
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <h1>Gallery</h1>
+        <span class="logo">Bookmarks</span>
+        {% if request.user.is_authenticated %}
+        <ul class="menu">
+            <li {% if section == 'profile' %} class='selected'{% endif %}>
+                <a href="{% url 'profile' %}">Profil</a>
+            </li>
+            <li {% if section == 'images' %} class='selected'{% endif %}>
+                <a href="#">Obrazy</a>
+            </li>
+            <li {% if section == 'people' %} class='selected'{% endif %}>
+                <a href="#">Osoby</a>
+            </li>
+        </ul>
+        {% else %}
+        <p>Brak danych</p>
+        {% endif %}
+        </span>
+        <span class="user">
+        {% if request.user.is_authenticated %}
+        <p>Witaj {{ request.user.username }}!</p>
+        <a href="{% url 'logout' %}">Wyloguj</a>
+        {% else %}
+        <a href="{% url 'login' %}">Zaloguj</a>
+        {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock Pages %}

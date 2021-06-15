@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block Pages %}{% load static %}{% include "scripts.html" %}
+<title>{% block title %}Login{% endblock title %}</title>
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Witaj!</h1>
+                    </div>
+                    <form action="{% url 'login' %}" class="user" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" name="username" id="id_username" class="form-control form-control-user" placeholder="{{ form.username.label }}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="{{ form.password.label }}" />
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox small">
+                                <input type="checkbox" class="custom-control-input" id="customCheck" />
+                                <label class="custom-control-label" for="customCheck">Zapamiętaj</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block" value="login">Zaloguj</button>
+                        <hr />
+                        {% csrf_token %}
+                        <div class="social">
+                            {% comment %} <a href="/" class="btn btn-github btn-user btn-block text-white bg-dark"> <i class="fab fa-github fa-fw"></i> Zaloguj z Github </a> {% endcomment %}
+                            {% comment %} <a href="/" class="btn btn-google btn-user btn-block"> <i class="fab fa-google fa-fw"></i> Zaloguj z Google </a> {% endcomment %}
+                            <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> Zaloguj z Facebook </a>
+                        </div>
+                    </form>
+                    <hr />
+                    {% if form.errors %}
+                    <div class="alert alert-danger" role="alert"><strong>Warning!</strong>{{ form.errors }}</div>
+                    {% else %} {% endif %}
+                    <hr />
+                    <div class="text-center">
+                        <a class="small" href="{% url 'password_reset' %}">Zapomniałeś Hasła?</a>
+                    </div>
+                    <div class="text-center">
+                        <a class="small" href="{% url 'register' %}">Rejestracja!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock Pages %}

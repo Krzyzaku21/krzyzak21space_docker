@@ -1,0 +1,4 @@
+{% extends "base.html" %} {% block Pages %} {% load static %}{% include "scripts.html" %}
+<p> Witaj </p>
+<p> Twoje konto {{ new_user.username }} zostało utworzone teraz możesz sie już <a href="{% url 'login' %}">zalogować</p>
+{% endblock Pages %}

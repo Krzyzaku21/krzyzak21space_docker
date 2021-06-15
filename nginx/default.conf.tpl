@@ -7,7 +7,10 @@ server {
         include                 /etc/nginx/uwsgi_params;
         client_max_body_size    10M;
     }
-    location /static {
+    location /staticfiles/ {
         alias /vol/static;
+    }
+    location /mediafiles/ {
+        alias /vol/mediafiles;
     }
 }

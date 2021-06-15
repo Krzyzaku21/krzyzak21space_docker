@@ -1,0 +1,127 @@
+{% extends "base.html" %} {% block Pages %} {% load static %}{% include "scripts.html" %}
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Stwórz konto!</h1>
+                    </div>
+                    <form class="user" action="." method="post" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input
+                                    type="text"
+                                    name="first_name"
+                                    class="form-control form-control-user"
+                                    id="exampleFirstName"
+                                    placeholder="{{ user_form.first_name.label }}"
+                                />
+                            </div>
+                            <div class="col-sm-6">
+                                <input
+                                    type="text"
+                                    name="last_name"
+                                    class="form-control form-control-user"
+                                    id="exampleLastName"
+                                    placeholder="{{ user_form.last_name.label }}"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control form-control-user" id="exampleUsername" placeholder="{{ user_form.username.label }}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="{{ user_form.email.label }}" />
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control form-control-user"
+                                    id="exampleInputPassword"
+                                    placeholder="{{ user_form.password.label }}"
+                                />
+                            </div>
+                            <div class="col-sm-6">
+                                <input
+                                    type="password"
+                                    name="password2"
+                                    class="form-control form-control-user"
+                                    id="exampleRepeatPassword"
+                                    placeholder="{{ user_form.password2.label }}"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input class="form-control form-control-user" type="date" min="2011-08-18" max="now" id="exampleDate-input" />
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="custom-file-upload">
+                                    <input class="custom-file-input" id="file-upload" type="file" />
+                                    <label for="file-upload" class="custom-file-upload1">Dodaj zdjęcie profilowe </label>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            // Add the following code if you want the name of the file appear on select
+                            $(".custom-file-input").on("change", function () {
+                                var fileName = $(this).val().split("\\").pop();
+                                $(this).siblings(".custom-file-upload1").addClass("selected").html(fileName);
+                            });
+                        </script>
+                        <style>
+                            .custom-file-upload input[type="file"] {
+                                display: none;
+                            }
+                            .custom-file-upload .custom-file-upload1 {
+                                background-clip: padding-box;
+                                background-color: #fff;
+                                border: 1px solid #d1d3e2;
+                                border-radius: 10rem;
+                                box-sizing: border-box;
+                                color: #6e707e;
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                                font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+                                    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                                font-size: 12.8px;
+                                font-weight: 400;
+                                height: calc(1.5em + 0.75rem + 2px);
+                                line-height: 1.5;
+                                margin: 0;
+                                overflow: visible;
+                                padding: 1.5rem 1rem;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                                width: 100%;
+                                word-wrap: break-word;
+                                cursor: pointer;
+                            }
+                        </style>
+                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Rejestacja" />
+                        {% comment %} <a href="{% url 'register_done' %}" class="btn btn-primary btn-user btn-block"> Rejestracja </a> {% endcomment %}
+                        <hr />
+                        <a href="{% url 'login' %}" class="btn btn-github btn-user btn-block text-white bg-dark"> <i class="fab fa-github fa-fw"></i> Rejestracja z Github </a>
+                        <a href="{% url 'login' %}" class="btn btn-google btn-user btn-block"> <i class="fab fa-google fa-fw"></i> Rejestracja z Google </a>
+                        <a href="{% url 'login' %}" class="btn btn-facebook btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> Rejestracja z Facebook </a>
+                        {% csrf_token %}
+                    </form>
+                    <hr />
+                    <div class="text-center">
+                        <a class="small" href="{% url 'password_reset' %}">Zapomniałeś hasła?</a>
+                    </div>
+                    <div class="text-center">
+                        <a class="small" href="{% url 'login' %}">Masz konto? Zaloguj się!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock Pages %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Udostepnij post {% endblock title %}{% load static %}
+{% block Pages %}
+
+{% block content %}
+{% if sent %}
+<h1> Wiadomość email wysłana</h1>
+<p> Wysłanie posta "{{ post.title }}" do {{ form.cleaned_data.to }} zakończyło się sukcesem. </p>
+{% else %}
+<h1>Udostepnij posta "{{ post.title}}" przez email </h1>
+<form action="." method="POST" class="d-flex flex-column">
+{% for field in form %}
+<div class="justify-content-start align-items-center">
+{{ field.errors }}
+<div>
+{{ field.label_tag }}</div> {{ field }}
+</div>
+{% endfor %}
+{% csrf_token %}
+<input type="submit" value="Wyślij wiadomość email">
+</form>
+{% endif %}
+{% endblock content %}
+
+{% endblock Pages %}
