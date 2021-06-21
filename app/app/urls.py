@@ -22,9 +22,9 @@ from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap
 
-# sitemaps = {
-#     'post': PostSitemap,
-# }
+sitemaps = {
+    'post': PostSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,9 +38,9 @@ urlpatterns = [
     # to users
     path('account/', include('account.urls')),
     # to social
-    # path('social-auth/', include('social_django.urls', namespace='social')),
+    path('social-auth/', include('social_django.urls', namespace='social')),
     # images
-    # path('images/', include('images.urls', namespace='images')),
+    path('images/', include('images.urls', namespace='images')),
     # to remove
     path('buttons/', TemplateView.as_view(template_name="to_remove/buttons.html"), name="buttons"),
     path('cards/', TemplateView.as_view(template_name="to_remove/cards.html"), name="cards"),

@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load thumbnail %} {% block title %}Ludzie{% endblock title %} {% block Pages %}
+<h1>Ludzie</h1>
+<div id="people-list">
+    {% for user in users %}
+    <div class="d-flex text-center">
+        <div class="card o-hidden border-0 shadow-lg">
+            <!-- <div class="card"> -->
+            <div class="card-body">
+                <div class="user">
+                    <a href="{{ user.get_absolute_url }}">
+                        <img src="{% thumbnail user.profile.photo 'avatar' %}" />
+                    </a>
+                    <div class="info">
+                        <span><a href="{{ user.get_absolute_url }}" class="title"></a> {{ user.get_full_name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% load crispy_forms_tags %}{% block Pages %} {% load static %}{% include "scripts.html" %}
+<style>
+    .asteriskField {
+        display: none;
+    }
+</style>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card d-flex align-items-center">
+            <div class="card-body">
+                <h1>Dodaj obraz</h1>
+                <img src="{{ request.GET.url }}" class="image-preview" />
+                <form action="." method="post" novalidate>
+                    {{ form|crispy }} {% csrf_token %}
+                    <button type="submit" class="btn btn-primary bg-primary float-right p-2">Zaznacz</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock Pages %}

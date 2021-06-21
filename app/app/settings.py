@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+from django.urls import reverse_lazy
 import os
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,12 +43,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "crispy_forms",
+    "crispy_forms",  # wyglad okienek
+    'easy_thumbnails',  # miniatury zdjęć
     # blog
     "blog.apps.BlogConfig",
     "taggit",
     # account
     "account.apps.AccountConfig",
+    "social_django",
+    # sites rss
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
+    # images
+    "images.apps.ImagesConfig",
 ]
 INSTALLED_APPS = ['django_db_prefix', ] + INSTALLED_APPS
 
@@ -136,7 +145,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-MEDIA_URL = "/mediafiles/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
@@ -144,6 +153,31 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+LOGIN_REDIRECT_URL = "profile"
+LOGOUT_REDIRECT_URL = "base"
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "account.authentication.EmailAuthBackend",
+    "social_core.backends.facebook.FacebookOAuth2",
+]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SITE_ID = 1
+
+# authomatic get_absolute_url()
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail',
+                                        args=[u.username])
+}
+
+# images trumbbnail
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (100, 100), 'crop': True},
+    },
+}

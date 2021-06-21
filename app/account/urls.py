@@ -4,8 +4,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 urlpatterns = [
-    # path('login/', views.user_login, name='login'),
-    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path('login/', views.user_login, name='login'),
+    # path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('password_change/', PasswordChangeView.as_view(template_name='password_change.html'), name='password_change'),
     path(
         'password_change/done/', PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
@@ -26,4 +26,8 @@ urlpatterns = [
     # path('register_done/', TemplateView.as_view(template_name="register_done.html"), name="register_done"),
     path('gallery/', TemplateView.as_view(template_name="gallery.html"), name="gallery"),
     path('logout/', LogoutView.as_view(template_name="logout.html"), name="logout"),
+    # following
+    path('users/', views.user_list, name='user_list'),
+    path('users/<username>/', views.user_detail, name='user_detail'),
+    # path('users/follow/', views.user_follow, name='user_follow'),
 ]

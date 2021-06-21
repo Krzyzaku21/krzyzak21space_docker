@@ -16,6 +16,7 @@ RUN python -m venv /py && \
     apk add --update --no-cache postgresql-client && \
     apk add --update --no-cache --virtual .tmp-deps \
     build-base postgresql-dev musl-dev linux-headers && \
+    apk add --no-cache libressl-dev libffi-dev cargo && \
     apk add jpeg-dev zlib-dev libjpeg && \
     /py/bin/pip install Pillow && \
     /py/bin/pip install -r /requirements.txt && \

@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from .forms import LoginForm, UserRegistationForm, UserEditForm, ProfileEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from .models import Profile
 from django.contrib import messages
 # Create your views here.
@@ -85,3 +86,23 @@ def edit(request):
         'profile_form': profile_form,
     }
     return render(request, 'edit.html', context)
+
+
+@login_required
+def user_list(request):
+    users = User.objects.filter(is_active=True)
+    return render(request,
+                  'account/user/list.html',
+                  {'section': 'people',
+                   'users': users})
+
+
+@login_required
+def user_detail(request, username):
+    user = get_object_or_404(User,
+                             username=username,
+                             is_active=True)
+    return render(request,
+                  'account/user/detail.html',
+                  {'section': 'people',
+                   'user': user})
